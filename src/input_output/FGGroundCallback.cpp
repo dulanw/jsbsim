@@ -38,7 +38,7 @@ namespace JSBSim {
 
 //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-double FGDefaultGroundCallback::GetAGLevel(double t, const FGLocation& loc,
+double FGDefaultGroundCallback::GetAGLevel(double t, const int gearNumber, const FGLocation& loc,
                                     FGLocation& contact, FGColumnVector3& normal,
                                     FGColumnVector3& vel, FGColumnVector3& angularVel) const
 {

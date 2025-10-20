@@ -76,7 +76,7 @@ public:
       @param w Angular velocity at the contact point
       @return altitude above ground
    */
-  virtual double GetAGLevel(double t, const FGLocation& location,
+  virtual double GetAGLevel(double t, const int gearNumber, const FGLocation& location,
                             FGLocation& contact,
                             FGColumnVector3& normal, FGColumnVector3& v,
                             FGColumnVector3& w) const = 0;
@@ -93,7 +93,12 @@ public:
   virtual double GetAGLevel(const FGLocation& location, FGLocation& contact,
                             FGColumnVector3& normal, FGColumnVector3& v,
                             FGColumnVector3& w) const
-  { return GetAGLevel(time, location, contact, normal, v, w); }
+  { return GetAGLevel(time, -1, location, contact, normal, v, w); }
+
+  virtual double GetAGLevel(const int gearNumber, const FGLocation& location, FGLocation& contact,
+                            FGColumnVector3& normal, FGColumnVector3& v,
+                            FGColumnVector3& w) const
+  { return GetAGLevel(time, gearNumber, location, contact, normal, v, w); }
 
   /** Set the terrain elevation.
       Only needs to be implemented if JSBSim should be allowed
@@ -128,7 +133,8 @@ public:
   explicit FGDefaultGroundCallback(double semiMajor, double semiMinor) :
     a(semiMajor), b(semiMinor) {}
 
-  double GetAGLevel(double t, const FGLocation& location,
+  double GetAGLevel(double t, const int gearNumber,
+                    const FGLocation& location,
                     FGLocation& contact,
                     FGColumnVector3& normal, FGColumnVector3& v,
                     FGColumnVector3& w) const override;

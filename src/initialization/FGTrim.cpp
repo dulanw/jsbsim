@@ -416,7 +416,7 @@ void FGTrim::trimOnGround(void)
 
     FGColumnVector3 normal, vDummy;
     FGLocation lDummy;
-    double height = fdmex->GetInertial()->GetContactPoint(gearLoc, lDummy,
+    double height = fdmex->GetInertial()->GetContactPoint(i, gearLoc, lDummy,
                                                           normal, vDummy,
                                                           vDummy);
 

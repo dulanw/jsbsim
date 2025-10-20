@@ -108,6 +108,13 @@ public:
     return GroundCallback->GetAGLevel(location, contact, normal, velocity,
                                       ang_velocity); }
 
+double GetContactPoint(const int gearNumber, const FGLocation& location,
+                       FGLocation& contact, FGColumnVector3& normal,
+                       FGColumnVector3& velocity, FGColumnVector3& ang_velocity) const
+  {
+      return GroundCallback->GetAGLevel(gearNumber, location, contact, normal, velocity,
+                                        ang_velocity); }
+
   /** Get the altitude above ground level.
       @return the altitude AGL in feet.
       @param location Location at which the AGL is evaluated.
