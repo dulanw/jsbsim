@@ -92,8 +92,8 @@ public:
       @param w Angular velocity at the contact point
       @return altitude above ground
   */
-  virtual double GetAGLevel(double t, const int gearNumber, const
-                            FGLocation& location, FGLocation& contact,
+  virtual double GetAGLevel(double t, const int gearNumber,
+                            const FGLocation& location, FGLocation& contact,
                             FGColumnVector3& normal, FGColumnVector3& v,
                             FGColumnVector3& w) const
   { return GetAGLevel(t, location, contact, normal, v, w); }
