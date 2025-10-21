@@ -69,7 +69,7 @@ public:
   /** Compute the altitude above ground.
       The altitude depends on time t and location l.
       @param t simulation time
-      @param l location
+      @param location location
       @param contact Contact point location below the location l
       @param normal Normal vector at the contact point
       @param v Linear velocity at the contact point
@@ -82,8 +82,25 @@ public:
                             FGColumnVector3& w) const = 0;
 
   /** Compute the altitude above ground.
+      The altitude depends on time t and location l.
+      @param t simulation time
+      @param gearNumber Gear Number
+      @param location location
+      @param contact Contact point location below the location l
+      @param normal Normal vector at the contact point
+      @param v Linear velocity at the contact point
+      @param w Angular velocity at the contact point
+      @return altitude above ground
+  */
+  virtual double GetAGLevel(double t, const int gearNumber,
+                            const FGLocation& location, FGLocation& contact,
+                            FGColumnVector3& normal, FGColumnVector3& v,
+                            FGColumnVector3& w) const
+  { return GetAGLevel(t, location, contact, normal, v, w); }
+
+  /** Compute the altitude above ground.
       The altitude depends on location l.
-      @param l location
+      @param location location
       @param contact Contact point location below the location l
       @param normal Normal vector at the contact point
       @param v Linear velocity at the contact point
@@ -94,6 +111,21 @@ public:
                             FGColumnVector3& normal, FGColumnVector3& v,
                             FGColumnVector3& w) const
   { return GetAGLevel(time, location, contact, normal, v, w); }
+
+  /** Compute the altitude above ground.
+      The altitude depends on location l.
+      @param gearNumber Gear number
+      @param location location
+      @param contact Contact point location below the location l
+      @param normal Normal vector at the contact point
+      @param v Linear velocity at the contact point
+      @param w Angular velocity at the contact point
+      @return altitude above ground
+  */
+  virtual double GetAGLevel(const int gearNumber, const FGLocation& location,
+                            FGLocation& contact, FGColumnVector3& normal,
+                            FGColumnVector3& v, FGColumnVector3& w) const
+  { return GetAGLevel(time, gearNumber, location, contact, normal, v, w); }
 
   /** Set the terrain elevation.
       Only needs to be implemented if JSBSim should be allowed

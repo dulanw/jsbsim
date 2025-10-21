@@ -296,8 +296,8 @@ const FGColumnVector3& FGLGear::GetBodyForces(void)
 
   // Compute the height of the theoretical location of the wheel (if strut is
   // not compressed) with respect to the ground level (AGL)
-  double height = fdmex->GetInertial()->GetContactPoint(gearLoc, contact,
-    normal, terrainVel, dummy);
+  double height = fdmex->GetInertial()->GetContactPoint(GearNumber, gearLoc,
+    contact, normal, terrainVel, dummy);
 
   // Don't want strut compression when in contact with the ground to return
   // a negative AGL
