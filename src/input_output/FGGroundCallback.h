@@ -160,8 +160,7 @@ public:
   explicit FGDefaultGroundCallback(double semiMajor, double semiMinor) :
     a(semiMajor), b(semiMinor) {}
 
-  double GetAGLevel(double t,
-                    const FGLocation& location,
+  double GetAGLevel(double t, const FGLocation& location,
                     FGLocation& contact,
                     FGColumnVector3& normal, FGColumnVector3& v,
                     FGColumnVector3& w) const override;
