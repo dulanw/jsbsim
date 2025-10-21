@@ -108,11 +108,20 @@ public:
     return GroundCallback->GetAGLevel(location, contact, normal, velocity,
                                       ang_velocity); }
 
-double GetContactPoint(const int gearNumber, const FGLocation& location,
-                       FGLocation& contact, FGColumnVector3& normal,
-                       FGColumnVector3& velocity, FGColumnVector3& ang_velocity) const
+  /** Get terrain contact point information below the current location.
+      @param gear_number  Gear number
+      @param location     Location at which the contact point is evaluated.
+      @param contact      Contact point location
+      @param normal       Terrain normal vector in contact point    (ECEF frame)
+      @param velocity     Terrain linear velocity in contact point  (ECEF frame)
+      @param ang_velocity Terrain angular velocity in contact point (ECEF frame)
+      @return Location altitude above contact point (AGL) in feet.
+      @see SetGroundCallback */
+  double GetContactPoint(const int gear_number, const FGLocation& location,
+                         FGLocation& contact, FGColumnVector3& normal,
+                         FGColumnVector3& velocity, FGColumnVector3& ang_velocity) const
   {
-      return GroundCallback->GetAGLevel(gearNumber, location, contact, normal, velocity,
+      return GroundCallback->GetAGLevel(gear_number, location, contact, normal, velocity,
                                         ang_velocity); }
 
   /** Get the altitude above ground level.
